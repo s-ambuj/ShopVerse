@@ -11,7 +11,7 @@ const Collection = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [Category, setCategory] = useState([]);
   const [SubCategory, setSubCategory] = useState([]);
-  // const[sortOption, setSortOption] = useState('default');
+  const[sortOption, setSortOption] = useState('');
 
   const handleCategoryChange = (e) => {
     const value = e.target.value;
@@ -33,20 +33,22 @@ const Collection = () => {
     });
   }
 
-  // const handleSortChange = (e) => {
-  //   const value = e.target.value;
-  //   setSortOption(value);
+  const handleSortChange = (e) => {
+    const value = e.target.value;
+    setSortOption(value);
 
-  //   let sortedProducts = [...filteredProducts];
-  //   if (value === 'price-asc') {
-  //     sortedProducts.sort((a, b) => a.price - b.price);
-  //   } else if (value === 'price-desc') {
-  //     sortedProducts.sort((a, b) => b.price - a.price);
-  //   } else if (value === 'relevant') {
-  //     sortedProducts.sort((a, b) => a.id > b.id ? 1 : -1);
-  //   }
-  //   setFilteredProducts(sortedProducts);
-  // }
+    let sortedProducts = [...filteredProducts];
+    if (value === 'default') {
+      sortedProducts = [...products];
+    } else if (value === 'price-asc') {
+      sortedProducts.sort((a, b) => a.price - b.price);
+    } else if (value === 'price-desc') {
+      sortedProducts.sort((a, b) => b.price - a.price);
+    } else if (value === 'relevant') {
+      sortedProducts.sort((a, b) => a.date > b.date);
+    }
+    setFilteredProducts(sortedProducts);
+  }
 
   useEffect(() => {
     setFilteredProducts(products);
@@ -60,7 +62,7 @@ const Collection = () => {
   }
 
   if (SubCategory.length > 0) {
-    filtered = filtered.filter(item => SubCategory.includes(item.subcategory));
+    filtered = filtered.filter(item => SubCategory.includes(item.subCategory));
   }
 
   setFilteredProducts(filtered);
@@ -113,8 +115,8 @@ const Collection = () => {
         <div className='flex justify-between text-base sm:text-2xl mb-4'>
           <Title text1={'ALL'} text2={'PRODUCTS'} />
           {/* Sort Products */}
-          <select className='border-2 border-gray-00 text-sm px-2'>
-            <option value="default">Sort By</option>
+          <select onChange={handleSortChange} className='border-2 border-gray-00 text-sm px-2'>
+            <option value="default">Sort By: Default</option>
             <option value="price-asc">Price: Low to High</option>
             <option value="price-desc">Price: High to Low</option>
             <option value="relevant">Newest Arrivals</option>
