@@ -135,8 +135,8 @@ Both the frontend and backend are deployed via Vercel.
 
 ## 📸 Screenshots
 
-    ![image](https://github.com/user-attachments/assets/e92291bd-6322-422a-8964-3f3af583aa22)
-    ![image](https://github.com/user-attachments/assets/812be815-f05a-4d37-aca6-32ed5b6d07d4)
+![image](https://github.com/user-attachments/assets/e92291bd-6322-422a-8964-3f3af583aa22)
+![image](https://github.com/user-attachments/assets/812be815-f05a-4d37-aca6-32ed5b6d07d4)
 
 
 ## 📄 License
