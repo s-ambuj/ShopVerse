@@ -39,7 +39,7 @@ const Footer = () => {
       <div>
         <hr />
         <p className='py-5 text-sm text-center'>
-          &copy; 2025 shopverse.com - All Rights Reserved.
+          Made with ❤️ by <a className="text-blue-400 no-underline" href='https://www.linkedin.com/in/sambuj/' target='_blank' rel='noopener noreferrer'>Ambuj Singh</a>
         </p>
       </div>
     </motion.div>
