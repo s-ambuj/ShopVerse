@@ -1,8 +1,6 @@
 # 🛒 ShopVerse - MERN Stack eCommerce Platform
 
-ShopVerse is a full-featured, modern eCommerce application built with the **MERN** stack (MongoDB, Express.js, React.js, Node.js).
-It includes dynamic product listings, secure user authentication, admin functionality, cart management, and integrated payment gateways via **Stripe** and **Razorpay**.
-
+ShopVerse is a modern full-stack eCommerce application featuring dynamic product listings, user authentication, cart management, and seamless checkout experiences with integrated **Stripe** and **Razorpay** payment gateways. Designed for scalability and performance, ShopVerse offers a responsive and intuitive shopping experience.
 > 🔗 **Live Demo**: https://shopverse-dusky.vercel.app/  
 
 
