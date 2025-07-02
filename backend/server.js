@@ -32,4 +32,4 @@ app.get('/', (req,res) => {
     res.send("API configured")
 })
 
-app.listen(port, () => console.log("Server initiated on PORT : " + port))
+export default app
