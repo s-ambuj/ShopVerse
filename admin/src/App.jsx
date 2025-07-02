@@ -22,7 +22,7 @@ const App = () => {
 
   return (
     <div className='bg-gray-50 min-h-screen'>
-      <ToastContainer />
+      <ToastContainer position="top-center" autoClose={1500} hideProgressBar={true} closeOnClick theme="colored" />
       { token === "" ? <Login setToken={setToken}/> : 
       <>
         <Navbar setToken={setToken}/>
