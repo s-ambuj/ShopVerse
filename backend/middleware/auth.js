@@ -3,13 +3,13 @@ import jwt from 'jsonwebtoken';
 const auth = async (req, res, next) => {
   const token = req.headers.token;
   if (!token) {
-    return res.json({ success: false, message: "Unauthorized access !!" });
+    return res.json({ success: false, message: "Please Login to your account" });
   }
 
   try {
     const token_decode = jwt.verify(token, process.env.JWT_SECRET);
     
-    req.body.userId = token_decode.id;
+    req.userId = token_decode.id;
     next();
   } catch (error) {
     console.log(error);

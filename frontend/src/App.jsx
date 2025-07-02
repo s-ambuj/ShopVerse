@@ -13,13 +13,14 @@ import Navbar from './components/navbar'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import Verify from './pages/Verify'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify'
+import Profile from './pages/Profile'
 
 
 const App = () => {
   return (
     <div className = 'px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
-      <ToastContainer />
+      <ToastContainer position="top-center" autoClose={1500} hideProgressBar={true} closeOnClick theme="colored" />
       <Navbar />
       <SearchBar />
       <Routes>
@@ -33,6 +34,7 @@ const App = () => {
         <Route path='placeorder' element={<PlaceOrder />} />
         <Route path='/orders' element={<Orders />} />
         <Route path='/verify' element={<Verify />} />
+        <Route path='/profile' element={<Profile />} />
       </Routes>
       <Footer />
     </div>
