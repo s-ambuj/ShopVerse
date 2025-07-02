@@ -19,7 +19,9 @@ connectcloudinary()
 app.use(express.json())
 app.use(cors())
 app.use(cors({
-  origin: 'https://shopverse-dusky.vercel.app',
+  origin: ['https://shopverse-dusky.vercel.app',
+    'https://shopverse-admin.vercel.app',
+  ],
   credentials: true
 }));
 
