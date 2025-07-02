@@ -7,6 +7,7 @@ import userRouter from './routes/userRoute.js'
 import productRouter from './routes/productRoute.js'
 import cartRouter from './routes/CartRoute.js'
 import orderRouter from './routes/OrderRoute.js'
+import path from 'path'
 
 // App Config
 const app = express()
@@ -17,6 +18,9 @@ connectcloudinary()
 // Middleware
 app.use(express.json())
 app.use(cors())
+
+// Static Files
+app.use('/uploads', express.static(path.resolve('uploads')));
 
 //API endpoints
 app.use('/api/user', userRouter)

@@ -17,7 +17,7 @@ const Orders = ({ token }) => {
     try {
       const response = await axios.post(backendURL + "/api/order/list", {}, { headers: { token } });
       if (response.data.success) {
-        setOrders(response.data.orders);
+        setOrders(response.data.orders.reverse());
       } else {
         toast.error(response.data.message);
       }
@@ -27,19 +27,17 @@ const Orders = ({ token }) => {
     }
   };
 
-  const statushandler = async ( e, orderId ) => {
-
+  const statushandler = async (e, orderId) => {
     try {
-      const response = await axios.post(backendURL + '/api/order/status', {orderId, status: e.target.value}, {headers: { token }});
-      if(response.data.success) {
+      const response = await axios.post(backendURL + '/api/order/status', { orderId, status: e.target.value }, { headers: { token } });
+      if (response.data.success) {
         await fetchAllOrders();
       }
     } catch (error) {
       console.log(error);
-      toast.error(response.data.message)
+      toast.error(error.message);
     }
-
-  }
+  };
 
   useEffect(() => {
     fetchAllOrders();
@@ -58,11 +56,15 @@ const Orders = ({ token }) => {
             <div>
               <div className="mb-2">
                 {order.items.map((item, idx) => (
-                  <p key={idx}>
+                  <p key={idx} className={`${item.status === "Cancelled" ? "text-red-500 line-through" : ""}`}>
                     {item.name} x {item.quantity} <span>{item.size}</span>
+                    {item.status === "Cancelled" && " (Cancelled)"}
                     {idx !== order.items.length - 1 && ","}
                   </p>
                 ))}
+                {order.items.some(item => item.status === "Cancelled") && (
+                  <p className="text-xs font-semibold text-red-600">Some items cancelled</p>
+                )}
               </div>
               <p className="mt-3 mb-2 font-medium">
                 {order.address.firstName} {order.address.lastName}
@@ -87,7 +89,12 @@ const Orders = ({ token }) => {
               </p>
             </div>
             <div>
-              <select onChange={(e) => statushandler(e, order._id)} className="p-2 font-semibold" value={order.status}>
+              <select
+                onChange={(e) => statushandler(e, order._id)}
+                className="p-2 font-semibold"
+                value={order.status}
+                disabled={order.items.every(item => item.status === "Cancelled")}
+              >
                 <option value="Order Placed">Order Placed</option>
                 <option value="Packing">Packing</option>
                 <option value="In Transit">In Transit</option>

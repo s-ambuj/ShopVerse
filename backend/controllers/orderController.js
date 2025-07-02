@@ -235,6 +235,7 @@ const updateOrderStatus = async (req, res) => {
   }
 };
 
+
 // Cancel Order Controller
 const cancelOrder = async (req, res) => {
   const { itemId } = req.body;
@@ -265,7 +266,6 @@ const cancelOrder = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
-
 
 export {
   placeOrder,
