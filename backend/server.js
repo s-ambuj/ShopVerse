@@ -18,6 +18,10 @@ connectcloudinary()
 // Middleware
 app.use(express.json())
 app.use(cors())
+app.use(cors({
+  origin: 'https://shopverse-dusky.vercel.app',
+  credentials: true
+}));
 
 // Static Files
 app.use('/uploads', express.static(path.resolve('uploads')));
