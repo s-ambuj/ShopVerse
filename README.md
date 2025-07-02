@@ -133,7 +133,7 @@ Both the frontend and backend are deployed via Vercel.
 
         Frontend/Admin: dist or default for React apps
 
-        Backend: Not required (it's serverless or API-based on Vercel)
+        Backend: Not required (it's API-based on Vercel)
 
 ## 📸 Screenshots
 
