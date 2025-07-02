@@ -4,7 +4,7 @@ import userModel from "../models/userModel.js";
 const addToCart = async (req, res) => {
   try {
     const { itemId, size } = req.body;
-    const userId = req.body.userId;
+    const userId = req.userId;
 
     const userData = await userModel.findById(userId);
     let cartData = userData.cartData || {};
@@ -27,7 +27,7 @@ const addToCart = async (req, res) => {
 const UpdateCart = async (req, res) => {
   try {
     const { itemId, size, quantity } = req.body;
-    const userId = req.body.userId;
+    const userId = req.userId;
 
     const userData = await userModel.findById(userId);
     let cartData = userData.cartData || {};
@@ -46,7 +46,7 @@ const UpdateCart = async (req, res) => {
 // Fetching the current cart items
 const getCart = async (req, res) => {
   try {
-    const userId = req.body.userId;
+    const userId = req.userId;
     const userData = await userModel.findById(userId);
     const cartData = userData.cartData || {};
 
