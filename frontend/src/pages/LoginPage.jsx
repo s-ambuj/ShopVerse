@@ -48,6 +48,10 @@ const LoginPage = () => {
     }
   }, [token]);
 
+  const redirectToAdmin = () => {
+    window.location.href = import.meta.env.VITE_ADMIN_URL;
+  };
+
   return (
     <motion.form
       onSubmit={onSubmitHandler}
@@ -127,6 +131,17 @@ const LoginPage = () => {
         className={`bg-black text-white font-light px-8 py-2 mt-4 ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
       >
         {loading ? 'Please wait...' : currentState === 'Login' ? 'Sign in' : 'Sign up'}
+      </motion.button>
+
+      <motion.button
+        type='button'
+        onClick={redirectToAdmin}
+        whileTap={{ scale: 0.97 }}
+        whileHover={{ scale: 1.03 }}
+        transition={{ duration: 0.2 }}
+        className='border border-black text-black font-light px-8 py-2 mt-2'
+      >
+        Sign in as Admin
       </motion.button>
     </motion.form>
   );
